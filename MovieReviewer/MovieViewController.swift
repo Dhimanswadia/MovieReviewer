@@ -8,14 +8,24 @@
 
 import UIKit
 import AFNetworking
+import EZLoadingActivity
 
 class MovieViewController: UIViewController , UITableViewDataSource,UITableViewDelegate {
     @IBOutlet var MovieTableView: UITableView!
+      var refreshControl: UIRefreshControl!
     var movies :  [NSDictionary]?
 
     
     override func viewDidLoad() {
            super.viewDidLoad()
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        MovieTableView.insertSubview(refreshControl, atIndex: 0)
+        
+        EZLoadingActivity.show("Loading...", disableUI: true)
+        EZLoadingActivity.hide(success: true, animated: true)
+        EZLoadingActivity.hide(success: false, animated: true)
+        
         MovieTableView.dataSource  = self
         MovieTableView.delegate  = self
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
@@ -71,6 +81,21 @@ class MovieViewController: UIViewController , UITableViewDataSource,UITableViewD
         
         print("row \( indexPath.row)")
         return cell
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    
+    func onRefresh() {
+        delay(2, closure: {
+            self.refreshControl.endRefreshing()
+        })
     }
 
 

@@ -6,5 +6,7 @@ use_frameworks!
 target 'MovieReviewer' do
 pod 'AFNetworking'
 
+pod 'EZLoadingActivity'
+
 end
 
