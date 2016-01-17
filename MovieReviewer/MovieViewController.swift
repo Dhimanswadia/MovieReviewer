@@ -37,7 +37,6 @@ class MovieViewController: UIViewController , UITableViewDataSource,UITableViewD
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
         
-        EZLoadingActivity.show("Loading...", disableUI: true)
 
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
@@ -104,7 +103,10 @@ class MovieViewController: UIViewController , UITableViewDataSource,UITableViewD
     }
     
     func onRefresh() {
+        
+       
         self.MovieTableView.reloadData()
+         EZLoadingActivity.showWithDelay("Waiting...", disableUI: false, seconds: 2)
     
         self.refreshControl.endRefreshing()
         
