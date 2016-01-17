@@ -3,7 +3,7 @@
 
 **MovieReviewer** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **4** hours spent in total
+Time spent: **8** hours spent in total
 
 ## User Stories
 
@@ -11,16 +11,18 @@ The following **required** functionality is complete:
 
 - [ ] User can view a list of movies currently playing in theaters from The Movie Database.
 - [ ] Poster images are loaded using the UIImageView category in the AFNetworking library.
-- [ ] User sees a loading state while waiting for the movies API.
+- [ ] User sees a loading state while waiting for the movies API using EZLoading Activity.
 - [ ] User can pull to refresh the movie list.
 
+The following **optional** features are implemented:
+- [ ] Customize the UI such that user can click in the movie to see details only about the movie
 
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/NKPcgYA.gif' />
+<img src='http://i.imgur.com/bwKQ9l3.gif' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
