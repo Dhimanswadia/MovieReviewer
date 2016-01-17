@@ -8,5 +8,8 @@ pod 'AFNetworking'
 
 pod 'EZLoadingActivity'
 
+pod 'SwiftLoader'
+
+
 end
 

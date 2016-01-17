@@ -15,6 +15,7 @@
 		D12C9C4B1C4343E300DF6AE5 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12C9C4A1C4343E300DF6AE5 /* MovieViewController.swift */; };
 		D12C9C4E1C434F6400DF6AE5 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12C9C4D1C434F6400DF6AE5 /* MovieCell.swift */; };
 		D12C9C511C43564500DF6AE5 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12C9C501C43564500DF6AE5 /* AFNetworking.framework */; };
+		D19CC1CC1C4C0C7E00FE9EBC /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19CC1CB1C4C0C7E00FE9EBC /* DetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D12C9C4A1C4343E300DF6AE5 /* MovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		D12C9C4D1C434F6400DF6AE5 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		D12C9C501C43564500DF6AE5 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "Pods/../build/Debug-iphoneos/AFNetworking.framework"; sourceTree = "<group>"; };
+		D19CC1CB1C4C0C7E00FE9EBC /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		D12C9C4C1C434F1E00DF6AE5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D19CC1CB1C4C0C7E00FE9EBC /* DetailController.swift */,
 				D12C9C4D1C434F6400DF6AE5 /* MovieCell.swift */,
 			);
 			name = Views;
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D19CC1CC1C4C0C7E00FE9EBC /* DetailController.swift in Sources */,
 				D12C9C391C43435D00DF6AE5 /* AppDelegate.swift in Sources */,
 				D12C9C4B1C4343E300DF6AE5 /* MovieViewController.swift in Sources */,
 				D12C9C4E1C434F6400DF6AE5 /* MovieCell.swift in Sources */,

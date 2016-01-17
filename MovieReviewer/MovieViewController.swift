@@ -10,32 +10,42 @@ import UIKit
 import AFNetworking
 import EZLoadingActivity
 
+
 class MovieViewController: UIViewController , UITableViewDataSource,UITableViewDelegate {
     @IBOutlet var MovieTableView: UITableView!
       var refreshControl: UIRefreshControl!
     var movies :  [NSDictionary]?
+    var boxView = UIView()
+     @IBOutlet var errorView: UILabel!
 
+    @IBOutlet var config: NSObject!
+    
     
     override func viewDidLoad() {
            super.viewDidLoad()
         refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        
         MovieTableView.insertSubview(refreshControl, atIndex: 0)
-        
-        EZLoadingActivity.show("Loading...", disableUI: true)
-        EZLoadingActivity.hide(success: true, animated: true)
-        EZLoadingActivity.hide(success: false, animated: true)
-        
+        onRefresh()
         MovieTableView.dataSource  = self
         MovieTableView.delegate  = self
+
+        
+        
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        
+        EZLoadingActivity.show("Loading...", disableUI: true)
+
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
             configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
             delegate:nil,
             delegateQueue:NSOperationQueue.mainQueue()
         )
+        
         
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
@@ -45,6 +55,7 @@ class MovieViewController: UIViewController , UITableViewDataSource,UITableViewD
                             NSLog("response: \(responseDictionary)")
                             
                             self.movies = responseDictionary["results"] as! [NSDictionary]
+                            EZLoadingActivity.hide(success: true, animated: true)
                             self.MovieTableView.reloadData()
                             
                             
@@ -93,11 +104,26 @@ class MovieViewController: UIViewController , UITableViewDataSource,UITableViewD
     }
     
     func onRefresh() {
-        delay(2, closure: {
-            self.refreshControl.endRefreshing()
-        })
+        self.MovieTableView.reloadData()
+    
+        self.refreshControl.endRefreshing()
+        
     }
-
-
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let cell = sender as! UITableViewCell
+        let indexPath = MovieTableView.indexPathForCell(cell)!
+        
+        let movie = movies![indexPath.row]
+        
+        let movieDetailsViewController = segue.destinationViewController as! DetailController
+        movieDetailsViewController.movie = movie
+        
+    }
+    
+    
 }
+
+
+
+

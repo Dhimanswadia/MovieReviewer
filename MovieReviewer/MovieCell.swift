@@ -12,5 +12,12 @@ class MovieCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var overviewLabel: UILabel!
     @IBOutlet var POSTERvIEW: UIImageView!
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+    
+    }
+
 
 }
