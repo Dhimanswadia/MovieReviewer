@@ -28,12 +28,13 @@ class MovieViewController: UIViewController , UITableViewDataSource,UITableViewD
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         
         MovieTableView.insertSubview(refreshControl, atIndex: 0)
-        onRefresh()
+//        onRefresh()
         MovieTableView.dataSource  = self
         MovieTableView.delegate  = self
-
+        Reload()
+    }
         
-        
+    func Reload () {
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
         
@@ -45,6 +46,7 @@ class MovieViewController: UIViewController , UITableViewDataSource,UITableViewD
             delegateQueue:NSOperationQueue.mainQueue()
         )
         
+        EZLoadingActivity.show("Loading...", disableUI: true)
         
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
@@ -54,28 +56,38 @@ class MovieViewController: UIViewController , UITableViewDataSource,UITableViewD
                             NSLog("response: \(responseDictionary)")
                             
                             self.movies = responseDictionary["results"] as! [NSDictionary]
-                            EZLoadingActivity.hide(success: true, animated: true)
                             self.MovieTableView.reloadData()
-                            
+                            self.EZloading()
                             
                     }
                 }
         });
         task.resume()
+        
+    }
+    
+    func EZloading () {
+        if movies == nil {
+            EZLoadingActivity.hide(success: false, animated: true)
+        } else {
+            EZLoadingActivity.hide(success: true, animated: true)
         }
+    }
     
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let movies = movies {
             return movies.count
         } else {
-        return 0
+            return 0
         }
 }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        
         let cell = MovieTableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
         
-    let movie = movies![indexPath.row]
+        let movie = movies![indexPath.row]
         let title = movie["title"] as!String
         let overview = movie["overview"] as!String
         let posterPath = movie["poster_path"] as!String
@@ -103,12 +115,14 @@ class MovieViewController: UIViewController , UITableViewDataSource,UITableViewD
     }
     
     func onRefresh() {
+       movies = nil
+        Reload()
         
-       
         self.MovieTableView.reloadData()
-         EZLoadingActivity.showWithDelay("Waiting...", disableUI: false, seconds: 2)
+       // EZLoadingActivity.showWithDelay("Waiting...", disableUI: false, seconds: 2)
     
         self.refreshControl.endRefreshing()
+        
         
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
