@@ -86,10 +86,12 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-MovieReviewer/AFNetworking.framework"
   install_framework "Pods-MovieReviewer/EZLoadingActivity.framework"
+  install_framework "Pods-MovieReviewer/PKHUD.framework"
   install_framework "Pods-MovieReviewer/SwiftLoader.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-MovieReviewer/AFNetworking.framework"
   install_framework "Pods-MovieReviewer/EZLoadingActivity.framework"
+  install_framework "Pods-MovieReviewer/PKHUD.framework"
   install_framework "Pods-MovieReviewer/SwiftLoader.framework"
 fi

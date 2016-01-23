@@ -9,6 +9,7 @@ pod 'AFNetworking'
 pod 'EZLoadingActivity'
 
 pod 'SwiftLoader'
+pod 'PKHUD'
 
 
 end

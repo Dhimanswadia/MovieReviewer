@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PKHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MovieReviewer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +37,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2EF8F8AF3BDF06AA822FE802A67FC317</key>
+		<key>37996821C40F19DBFAA2EE2D7D83B58B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8479B4B2FE48BC1FF3AD9763D939F5CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CBA147191AE1852C1BCC0CBD4194503F</key>
+		<key>F13B01CD57866324915879AD51FFAD36</key>
 		<dict>
 			<key>primary</key>
 			<true/>

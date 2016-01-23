@@ -23,6 +23,7 @@ class MovieViewController: UIViewController , UITableViewDataSource,UITableViewD
     
     override func viewDidLoad() {
            super.viewDidLoad()
+        
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
