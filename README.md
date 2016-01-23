@@ -9,13 +9,13 @@ Time spent: **8** hours spent in total
 
 The following **required** functionality is complete:
 
-- [ ] User can view a list of movies currently playing in theaters from The Movie Database.
-- [ ] Poster images are loaded using the UIImageView category in the AFNetworking library.
-- [ ] User sees a loading state while waiting for the movies USING ProgressHUD.
-- [ ] User can pull to refresh the movie list.
+- [x] User can view a list of movies currently playing in theaters from The Movie Database.
+- [x] Poster images are loaded using the UIImageView category in the AFNetworking library.
+- [x] User sees a loading state while waiting for the movies USING ProgressHUD.
+- [x] User can pull to refresh the movie list.
 
 The following **optional** features are implemented:
-- [ ] Customize the UI such that user can click in the movie to see details only about the movie
+- [x] Customize the UI such that user can click in the movie to see details only about the movie
 
 
 ## Video Walkthrough 
@@ -23,6 +23,7 @@ The following **optional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/pTTmg2O.gif' />
+<img src='http://i.imgur.com/iZmDpiR.gif' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
