@@ -19,5 +19,51 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieController2.swift"
+            timestampString = "475283014.479225"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieReviewer.MovieController2.init (MovieReviewer.MovieController2.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; MovieReviewer.MovieController2"
+                  moduleName = "MovieReviewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Swadia/IdeaProjects/MovieReviewer/MovieController2.swift"
+                  timestampString = "475283432.293961"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "58">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieReviewer.MovieController2.init (MovieReviewer.MovieController2.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;MovieReviewer.MovieController2&gt;"
+                  moduleName = "MovieReviewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Swadia/IdeaProjects/MovieReviewer/MovieController2.swift"
+                  timestampString = "475283432.294057"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
