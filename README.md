@@ -13,6 +13,13 @@ The following **required** functionality is complete:
 - [x] Poster images are loaded using the UIImageView category in the AFNetworking library.
 - [x] User sees a loading state while waiting for the movies USING ProgressHUD.
 - [x] User can pull to refresh the movie list.
+- The following **optional** features are implemented:
+
+- [x] User sees an error message when there's a networking error.
+- [x] Movies are displayed using a CollectionView instead of a TableView.
+- [x] User can search for a movie.
+- [x] All images fade in as they are loading.
+- [x] Customize the UI.
 
 The following **optional** features are implemented:
 - [x] Customize the UI such that user can click in the movie to see details only about the movie
