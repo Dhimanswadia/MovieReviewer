@@ -209,8 +209,7 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
         collectionView.reloadData()
     }
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
+               searchBar.text = ""
         searchBar.resignFirstResponder()
     }
     func dismissKeyboard() {
