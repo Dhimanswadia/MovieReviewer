@@ -13,6 +13,9 @@ The following **required** functionality is complete:
 - [x] Poster images are loaded using the UIImageView category in the AFNetworking library.
 - [x] User sees a loading state while waiting for the movies USING ProgressHUD.
 - [x] User can pull to refresh the movie list.
+- [x] User can view movie details by tapping on a cell.
+- [ ] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
+- [x] Customize the selection effect of the cell.
 - The following **optional** features are implemented:
 
 - [x] User sees an error message when there's a networking error.
@@ -29,7 +32,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/pTTmg2O.gif' />
+<img src='http://i.imgur.com/vh0Lrg3.gif' />
 <img src='http://i.imgur.com/iZmDpiR.gif' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
