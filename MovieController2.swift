@@ -21,14 +21,15 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
     
     var refreshControl: UIRefreshControl!
     var filteredData : [NSDictionary]?
-   
+    var endPoint : String!
+    
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var Networkerror: UIView!
     
     
-
+    
     var movies :  [NSDictionary]?
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +47,9 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
         
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         collectionView.insertSubview(refreshControl, atIndex: 0)
-     PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
         PKHUD.sharedHUD.show()
-       
+        
         
         
         
@@ -57,17 +58,17 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
         
         
     }
-  
+    
     
     @IBAction func dismisskeyboard(sender: AnyObject) {
         self.searchBar.resignFirstResponder()
     }
-
+    
     
     
     func refreshdata() {
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endPoint)?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
             configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
@@ -90,17 +91,17 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
                             PKHUD.sharedHUD.contentView = PKHUDSuccessView()
                             PKHUD.sharedHUD.show()
                             PKHUD.sharedHUD.hide(afterDelay: 2.0)
-
+                            
                             
                     }
                 } else {
                     self.Networkerror.hidden = false
-                 
+                    
                     
                 }
                 if error != nil {
                     self.Networkerror.hidden = false
-                  
+                    
                 }
                 
         });
@@ -115,7 +116,7 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
         self.navigationController?.navigationBarHidden = false
         
     }
-
+    
     func delay(delay:Double, closure:()->()) {
         dispatch_after(
             dispatch_time(
@@ -124,7 +125,7 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
             ),
             dispatch_get_main_queue(), closure)
     }
-
+    
     
     func onRefresh() {
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
@@ -146,17 +147,17 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
             PKHUD.sharedHUD.show()
             PKHUD.sharedHUD.hide(afterDelay: 2.0);
         })
-    refreshdata()
+        refreshdata()
     }
-
-
+    
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let filteredData = filteredData{
             return filteredData.count
         } else {
             return 0
         }
-
+        
         
         
     }
@@ -165,27 +166,26 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MovieCell2", forIndexPath: indexPath) as! MovieCell2
         
         if let movie = filteredData?[indexPath.row] {
-        if let title = movie["title"] as? String {
-        let posterPath = movie["poster_path"] as! String
-        let baseUrl = "http://image.tmdb.org/t/p/w500"
-        let imageUrl = NSURL(string: baseUrl + posterPath)
-        cell.movieView.alpha = 0
-        cell.movieView.setImageWithURL(imageUrl!)
+            if let title = movie["title"] as? String {
+                let posterPath = movie["poster_path"] as! String
+                let baseUrl = "http://image.tmdb.org/t/p/w500"
+                let imageUrl = NSURL(string: baseUrl + posterPath)
+                cell.movieView.alpha = 0
+                cell.movieView.setImageWithURL(imageUrl!)
+                
+                UIView.animateWithDuration(1, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
+                    cell.movieView.alpha = 1
+                    }, completion: nil)
+            } else {
+                
+                cell.movieView.image = UIImage(named: "template")
+            }
+            
+        }
         
-        UIView.animateWithDuration(1, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
-            cell.movieView.alpha = 1
-            }, completion: nil)
-        } else {
-    
-    cell.movieView.image = UIImage(named: "template")
-    }
-
-    }
-    
-    
         return cell
-}
-
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let cell = sender as! UICollectionViewCell
@@ -209,12 +209,14 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
         collectionView.reloadData()
     }
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-               searchBar.text = ""
+        searchBar.text = ""
+        self.filteredData = movies
+        collectionView.reloadData()
         searchBar.resignFirstResponder()
     }
     func dismissKeyboard() {
         self.searchBar.resignFirstResponder()
     }
     
-
-    }
+    
+}

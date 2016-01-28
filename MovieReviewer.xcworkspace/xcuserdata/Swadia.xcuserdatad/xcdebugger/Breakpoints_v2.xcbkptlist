@@ -40,12 +40,12 @@
                   moduleName = "MovieReviewer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Swadia/IdeaProjects/MovieReviewer/MovieController2.swift"
-                  timestampString = "475283432.293961"
+                  timestampString = "475540524.421504"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "58">
+                  offsetFromSymbolStart = "60">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -55,7 +55,7 @@
                   moduleName = "MovieReviewer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Swadia/IdeaProjects/MovieReviewer/MovieController2.swift"
-                  timestampString = "475283432.294057"
+                  timestampString = "475540524.421771"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
