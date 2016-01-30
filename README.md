@@ -69,7 +69,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/liwUr8G.gif'/>
+<img src='http://i.imgur.com/NO5XCII.gifv'/>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
