@@ -37,8 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = UIColor.orangeColor()
         UITabBar.appearance().tintColor = UIColor.purpleColor()
         UINavigationBar.appearance().tintColor = UIColor.orangeColor()
-        application.statusBarHidden = true
-        UIApplication.sharedApplication().statusBarHidden = true
+       
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        self.window?.backgroundColor = UIColor.blackColor()
 
         return true
     }

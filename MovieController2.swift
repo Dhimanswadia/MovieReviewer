@@ -39,6 +39,7 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
         collectionView.delegate = self
         filteredData = movies
         Networkerror.hidden = true
+        UINavigationBar.appearance().barTintColor = UIColor.blackColor()
         
         let NetworkError = UITapGestureRecognizer(target: self, action: "networkError1")
         Networkerror.addGestureRecognizer(NetworkError)
@@ -166,12 +167,12 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MovieCell2", forIndexPath: indexPath) as! MovieCell2
         
-        if let movie = filteredData?[indexPath.row] {
-            if let title = movie["title"] as? String {
+        let movie = filteredData?[indexPath.row]
+            let title = movie!["title"] as? String
                 let baseUrl = "http://image.tmdb.org/t/p/w500"
-                if let  posterPath = movie["poster_path"] as? String {
+                if let  posterPath = movie!["poster_path"] as? String {
                 let imageUrl = NSURL(string: baseUrl + posterPath)
-                cell.movieView.alpha = 0
+               // cell.movieView.alpha = 0
                // cell.movieView.setImageWithURL(imageUrl!)
                 cell.movieView.setImageWithURLRequest(
                     NSURLRequest(URL: imageUrl!),
@@ -183,21 +184,29 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
                             print("fade om Image")
                             cell.movieView.alpha = 0.0
                             cell.movieView.image = image
-                            UIView.animateWithDuration(1, animations: { () -> Void in
+                            UIView.animateWithDuration(1.1, animations: { () -> Void in
                                 cell.movieView.alpha = 1.0
                             })
                         } else {
                             print("Image was cached ")
                             cell.movieView.image = image
+                            UIView.animateWithDuration(1.1, animations: { () -> Void in
+                                cell.movieView.alpha = 1.0
+                            })
+
+                        
                         }
                     },
                     failure: { (imageRequest, imageResponse, error) -> Void in
-                       
+                        cell.movieView.image = UIImage(named: "pic")
                 })
                 
-                }
-            }
         }
+        let selbackgroundView = UIView()
+        selbackgroundView.backgroundColor = UIColor.greenColor()
+        cell.selectedBackgroundView = selbackgroundView
+        
+    
         return cell
     }
     
