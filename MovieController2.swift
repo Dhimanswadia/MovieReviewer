@@ -33,6 +33,7 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         searchBar.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -167,22 +168,36 @@ class MovieController2: UIViewController,UICollectionViewDelegate,UICollectionVi
         
         if let movie = filteredData?[indexPath.row] {
             if let title = movie["title"] as? String {
-                let posterPath = movie["poster_path"] as! String
                 let baseUrl = "http://image.tmdb.org/t/p/w500"
+                if let  posterPath = movie["poster_path"] as? String {
                 let imageUrl = NSURL(string: baseUrl + posterPath)
                 cell.movieView.alpha = 0
-                cell.movieView.setImageWithURL(imageUrl!)
+               // cell.movieView.setImageWithURL(imageUrl!)
+                cell.movieView.setImageWithURLRequest(
+                    NSURLRequest(URL: imageUrl!),
+                    placeholderImage: nil,
+                    success: { (imageRequest, imageResponse, image) -> Void in
+                        
+                        
+                        if imageResponse != nil {
+                            print("fade om Image")
+                            cell.movieView.alpha = 0.0
+                            cell.movieView.image = image
+                            UIView.animateWithDuration(1, animations: { () -> Void in
+                                cell.movieView.alpha = 1.0
+                            })
+                        } else {
+                            print("Image was cached ")
+                            cell.movieView.image = image
+                        }
+                    },
+                    failure: { (imageRequest, imageResponse, error) -> Void in
+                       
+                })
                 
-                UIView.animateWithDuration(1, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
-                    cell.movieView.alpha = 1
-                    }, completion: nil)
-            } else {
-                
-                cell.movieView.image = UIImage(named: "template")
+                }
             }
-            
         }
-        
         return cell
     }
     
