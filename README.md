@@ -14,7 +14,7 @@ The following **required** functionality is complete:
 - [x] User sees a loading state while waiting for the movies USING ProgressHUD.
 - [x] User can pull to refresh the movie list.
 - [x] User can view movie details by tapping on a cell.
-- [ ] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
+- [x] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
 - [x] Customize the selection effect of the cell.
 - The following **optional** features are implemented:
 
@@ -69,7 +69,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/liwUr8G.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/liwUr8G.gifv'/>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
